@@ -1,0 +1,79 @@
+INIT
+//initialize drone
+
+int currentHeight = getAltitude();
+int currentTemperature = getTemperature();
+int currentHeading = getHeading();
+spray( false );
+
+// connect to device
+bool connected = connect(true);
+send "Drone is connected " + connected;
+
+
+// function to make drone move forward
+bool moveForward(int distance){
+    for( int i = 0; i < distance; i++ ){
+        // move forward
+        horizontal( 1 );
+    }   
+    return true;
+}
+
+// function to make drone move backward
+bool moveBackward(int distance){
+    for( int i = 0; i < distance; i++ ){
+        // move forward
+        horizontal( -1 );
+    }
+    return true;
+}
+
+/* 
+makes the drone move for i meters for 100 times
+turns right 1 degree if i % 3 is true and if i % 2 is false
+turns left 1 degree if i % 2 is true and if i % 3 is false
+stops otherwise
+*/
+bool turnedRight = false;
+for(int i = 0; i < 100; i++){
+    if(i % 3 == 0 && i % 2 != 0){
+        moveForward(i);
+        turnedRight = turn(true);
+    }
+    elif( i % 2 == 0 && i % 3 != 0){
+        moveBackward(i);
+        turnedRight = turn(false);
+    }
+    else {
+        // stop moving
+        horizontal(0);
+    }
+}
+
+send "Drone is facing right " + turnedRight;
+
+if(turnedRight and connected){
+    send "Drone is connected to device and running";
+}
+else{
+    send "Something is wrong about the drone";
+}
+
+send "Spraying for 100 meters straight";
+spray(true);
+
+for (int i = 0; i < 100; i++){
+    moveForward(1);
+}
+
+send "Spraying is done, stopping...";
+spray(false);
+
+send "Disconnecting from device..";
+connected = connect(false);
+send "Disconnected: " + connected;
+
+send "End Program";
+
+FINISH

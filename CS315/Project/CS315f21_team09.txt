@@ -1,0 +1,117 @@
+INIT
+//initialize drone
+
+int currentHeight = getAltitude();
+int currentTemperature = getTemperature();
+int currentHeading = getHeading();
+spray( false );
+
+// connect to device
+connect(true);
+
+//asecend until at 100m height
+while( currentHeight < 1000 ){
+    vertical( 0.1 );
+    currentHeight = getAltitude();
+}
+
+//spray straight for 100 meters
+spray( true );
+for( int i = 0; i < 99; i++ ){
+    /*  horizontal:
+        any positive int: forwards
+        zero: stop
+        any negative int: backwards
+    */
+    horizontal( 1 );
+}
+spray( false );
+
+/*
+this sort of code implementation is ineffiecent
+to do repetitive spraying use a function instead
+*/
+
+//declare USpray
+
+bool USpray( int repetition, bool clockWise ){
+
+    spray( true );
+
+    //test
+
+    for( int i = 1; i <= repetition; i++ ){
+
+        //test
+        
+        for( int i = 0; i < 99; i++ )
+            horizontal( 1 );
+
+        for( int i = 0; i < 90; i++ )
+            turn( clockWise );
+
+        send "u-sprayed " + i + " times";
+    }
+    spray( false );
+
+    return true;
+}
+
+// use USpray
+int repetition;
+bool clockWise;
+recieve repetition + clockWise;
+
+bool hasSprayed = USray(repetition,clockWise);
+
+send "u-spray is succesful?" + hasSprayed;
+
+/*
+This function takes int points to spray for 
+10 times [points length] and 10 turns
+*/
+bool SprayPoints(int points[10], bool turnPoints[10]){
+
+    spray(true);
+
+    for(int point in points){
+        int i = 0;
+
+        for(int k = 0; k < point; k++){
+            horizontal( 1 );
+        }
+
+        send "Drone has sprayed for " + point;
+        send "Drone is turning clockwise" + turnPoints[i];
+
+        turn(turnPoints[i]);
+        i++;
+    }
+
+    spray(false);
+
+    return true;
+}
+
+int points[10]; 
+bool turnPoints[10];
+
+for(int i = 0; i < 10; i++) {
+    points[i] = i;
+
+    if(i % 2 == 0){
+        turnPoints[i] = true;
+    }
+    else {
+        turnPoints[i] = false;
+    }
+
+}
+
+// sprayed for 10 points and 10 turns
+SprayPoints(points, turnPoints);
+
+// disconnect from device
+connect(false);
+
+FINISH
