@@ -2,4 +2,5 @@ Takes a string containing a link to a text file that contains a list of text fil
 ```
 java ParallelFileDownloader http://www.cs.bilkent.edu.tr/~cs421/fall21/project1/index1.txt 3
 ```
-One can also use JDK 7.0_80 compiler to compile.
+One can also use JDK 7.0_80 compiler to compile.\
+It is structured in this weird way because it was required that the assignment to consist of a single java class.
