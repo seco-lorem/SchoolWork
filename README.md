@@ -2,9 +2,13 @@
 Some of the computer science related school work in Bilkent University.
 ## Junior Year's Fall
 ### CS 464
-Learnt the fundamentals of machine learning. See our [term project](https://github.com/larafenercioglu/emotion_detection).
+Learned the fundamentals of machine learning. See our [term project](https://github.com/larafenercioglu/emotion_detection).
 ### CS 421
 Covered Internet and Computer Networks in detail. Started from application layer, covered till link layer. See an example programming assignment about HTTP [here](https://github.com/seco-lorem/SchoolWork/tree/main/ParallelFileDownloader).
+### CS 353
+Learned database design and SQL in detail.
+### CS 342
+Covered Operating System concepts. Projects were written on ubuntu with C. Examples: Scheduling simulator with threads, a thread-safe dynamic memory allocator library that implements functions like malloc(), free(), print_blocks() etc.
 ### CS 319
 Learnt the principles and stages of object-oriented software development. Applied them in our [term project](https://github.com/seco-lorem/YACM), the grading of which was as:\
 25% Analysis Report\
