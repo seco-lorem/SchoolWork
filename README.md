@@ -1,6 +1,8 @@
 # School Work
 Some of the computer science related school work in Bilkent University.
-## Junior Year's Fall
+## Senior Year
+Took courses: Data Privacy, Software Engineering Project Management, Information Retrieval Systems, Algorithms, Automata Theory and Formal Languages, and [Senior Design Project](https://seco-lorem.github.io/CleaverWall) I & II.
+## Junior Year
 ### CS 464
 Learnt the fundamentals of machine learning. See our [term project](https://github.com/larafenercioglu/emotion_detection).
 ### CS 421
